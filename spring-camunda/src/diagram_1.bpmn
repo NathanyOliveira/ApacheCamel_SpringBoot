@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1fyrag7" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <bpmn:process id="proecesso-mercadoria" name="proecesso-mercadoria" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0dg7n6i</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0dg7n6i" sourceRef="StartEvent_1" targetRef="Activity_0wfbkyi" />
+    <bpmn:task id="Activity_1ln0to7" name="CadastrarMercadoria">
+      <bpmn:incoming>Flow_0fl2p0l</bpmn:incoming>
+      <bpmn:outgoing>Flow_00bx7fr</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0fl2p0l" sourceRef="Activity_0wfbkyi" targetRef="Activity_1ln0to7" />
+    <bpmn:task id="Activity_1hn2b8j" name="NottificarRecebimento">
+      <bpmn:incoming>Flow_00bx7fr</bpmn:incoming>
+      <bpmn:outgoing>Flow_1786rys</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_00bx7fr" sourceRef="Activity_1ln0to7" targetRef="Activity_1hn2b8j" />
+    <bpmn:sequenceFlow id="Flow_1786rys" sourceRef="Activity_1hn2b8j" targetRef="Event_08u8twa" />
+    <bpmn:endEvent id="Event_08u8twa">
+      <bpmn:incoming>Flow_1786rys</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_0wfbkyi" name="ReceberMercadoria" camunda:delegateExpression="${receberMercadoria}">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property />
+        </camunda:properties>
+        <camunda:executionListener class="" event="start" />
+        <camunda:inputOutput>
+          <camunda:inputParameter name="Input_0sobcdj" />
+          <camunda:outputParameter name="Output_0p80t0k" />
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0dg7n6i</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fl2p0l</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="proecesso-mercadoria">
+      <bpmndi:BPMNEdge id="Flow_0dg7n6i_di" bpmnElement="Flow_0dg7n6i">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="243" y="117" />
+        <di:waypoint x="243" y="100" />
+        <di:waypoint x="270" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fl2p0l_di" bpmnElement="Flow_0fl2p0l">
+        <di:waypoint x="370" y="100" />
+        <di:waypoint x="400" y="100" />
+        <di:waypoint x="400" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00bx7fr_di" bpmnElement="Flow_00bx7fr">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1786rys_di" bpmnElement="Flow_1786rys">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="762" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ln0to7_di" bpmnElement="Activity_1ln0to7">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hn2b8j_di" bpmnElement="Activity_1hn2b8j">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_08u8twa_di" bpmnElement="Event_08u8twa">
+        <dc:Bounds x="762" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18dq064_di" bpmnElement="Activity_0wfbkyi">
+        <dc:Bounds x="270" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
